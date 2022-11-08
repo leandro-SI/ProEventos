@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProEventos.API.Data;
 using ProEventos.API.Models;
 using System;
 using System.Collections.Generic;
@@ -34,21 +35,25 @@ namespace ProEventos.API.Controllers
 
         };
 
-        public EventoController()
-        {
+        private readonly DataContext _context = null;
 
+        public EventoController(DataContext context)
+        {
+            _context = context;
         }
 
         [HttpGet]
+        [Route("GetEventos")]
         public IEnumerable<Evento> Get()
         {
-            return _evento;
+            return _context.Eventos;
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<Evento> Get(int id)
+        [HttpGet]
+        [Route("GetEventoById")]
+        public Evento GetById(int id)
         {
-            return _evento.Where(evento => evento.EventoId == 2);
+            return _context.Eventos.FirstOrDefault(evento => evento.EventoId == id);
         }
 
     }
