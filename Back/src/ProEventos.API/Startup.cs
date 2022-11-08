@@ -29,7 +29,7 @@ namespace ProEventos.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<DataContext>(context => context.UseSqlite(Configuration.GetConnectionString("")));
+            services.AddDbContext<DataContext>(context => context.UseSqlite(Configuration.GetConnectionString("ProEventosConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
