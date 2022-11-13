@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ProEventos.API.Data;
+using ProEventos.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace ProEventos.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<DataContext>(context => context.UseSqlite(Configuration.GetConnectionString("ProEventosConnection")));
+            services.AddDbContext<ProEventosContext>(context => context.UseSqlite(Configuration.GetConnectionString("ProEventosConnection")));
             services.AddControllers();
             services.AddCors();
             services.AddSwaggerGen(c =>
