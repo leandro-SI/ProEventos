@@ -94,19 +94,52 @@ namespace ProEventos.Persistence
             return await query.FirstOrDefaultAsync();
         }
 
-        public Task<Evento[]> GetAllPalestrantesAsync(bool includeEventos)
+        public async Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Palestrante> query = _context.Palestrantes
+                .Include(p => p.RedesSociais);
+
+            if (includeEventos)
+            {
+                query = query.Include(p => p.PalestrantesEventos)
+                    .ThenInclude(pe => pe.Evento);
+            }
+
+            query = query.OrderBy(p => p.Id);
+
+            return await query.ToArrayAsync();
         }
 
-        public Task<Evento[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos)
+        public async Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos)
         {
-            throw new NotImplementedException();
+            IQueryable<Palestrante> query = _context.Palestrantes
+                .Include(p => p.RedesSociais);
+
+            if (includeEventos)
+            {
+                query = query.Include(p => p.PalestrantesEventos)
+                    .ThenInclude(pe => pe.Evento);
+            }
+
+            query = query.OrderBy(p => p.Id).Where(p => p.Nome.ToLower().Contains(nome.ToLower()));
+
+            return await query.ToArrayAsync();
         }
 
-        public Task<Evento> GetPalestranteByIdAsync(int palestranteId, bool includeEventos)
+        public async Task<Palestrante> GetPalestranteByIdAsync(int palestranteId, bool includeEventos)
         {
-            throw new NotImplementedException();
+            IQueryable<Palestrante> query = _context.Palestrantes
+                .Include(p => p.RedesSociais);
+
+            if (includeEventos)
+            {
+                query = query.Include(p => p.PalestrantesEventos)
+                    .ThenInclude(pe => pe.Evento);
+            }
+
+            query = query.OrderBy(p => p.Id).Where(p => p.Id == palestranteId);
+
+            return await query.FirstOrDefaultAsync();
         }
 
     }
