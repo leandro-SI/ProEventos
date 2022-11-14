@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using ProEventos.Domain.Models;
 using ProEventos.Persistence;
+using ProEventos.Persistence.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
