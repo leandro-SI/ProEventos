@@ -16,7 +16,6 @@ namespace ProEventos.API.Controllers
     [Route("api/[controller]")]
     public class EventoController : ControllerBase
     {
-
         private readonly IEventoService _eventoService = null;
 
         public EventoController(IEventoService eventoService)
@@ -43,7 +42,7 @@ namespace ProEventos.API.Controllers
             }
         }
 
-        [HttpGet("{id}/id")]
+        [HttpGet]
         [Route("GetEventoById")]
         public async Task<IActionResult> GetEventoById(int id)
         {
@@ -62,7 +61,7 @@ namespace ProEventos.API.Controllers
             }
         }
 
-        [HttpGet("{tema}/tema")]
+        [HttpGet]
         [Route("GetEventosByTema")]
         public async Task<IActionResult> GetEventosByTema(string tema)
         {
@@ -119,7 +118,7 @@ namespace ProEventos.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         [Route("DeleteEvento")]
         public async Task<IActionResult> DeleteEvento(int id)
         {

@@ -43,7 +43,7 @@ namespace ProEventos.Application.Services
         {
             try
             {
-                var evento = _eventoPersist.GetEventoByIdAsync(eventoId, false);
+                var evento = await _eventoPersist.GetEventoByIdAsync(eventoId, false);
 
                 if (evento == null) return null;
 
