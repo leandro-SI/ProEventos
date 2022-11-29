@@ -1,7 +1,8 @@
 import { Evento } from './../models/Evento';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EventoService } from '../services/evento.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-eventos',
@@ -9,6 +10,9 @@ import { EventoService } from '../services/evento.service';
   styleUrls: ['./eventos.component.scss']
 })
 export class EventosComponent implements OnInit {
+
+  modalRef?: BsModalRef;
+  message?: string;
 
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
@@ -34,7 +38,7 @@ export class EventosComponent implements OnInit {
     );
   }
 
-  constructor(private eventoService: EventoService) { }
+  constructor(private eventoService: EventoService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.getEventos()
@@ -54,6 +58,20 @@ export class EventosComponent implements OnInit {
 
   public alterarImagem() {
     this.exibirImagem = !this.exibirImagem;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+    this.message = 'Confirmed!';
+    this.modalRef?.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef?.hide();
   }
 
 }
