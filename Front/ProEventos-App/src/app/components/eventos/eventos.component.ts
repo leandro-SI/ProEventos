@@ -13,6 +13,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class EventosComponent implements OnInit {
 
+  public titulo = 'Eventos';
+
   modalRef?: BsModalRef;
   message?: string;
 

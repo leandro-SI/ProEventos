@@ -21,6 +21,7 @@ import { EventoService } from './services/evento.service';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TituloComponent } from './shared/titulo/titulo.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       DateTimeFormatPipe,
       ContatosComponent,
       DashboardComponent,
-      PerfilComponent
+      PerfilComponent,
+      TituloComponent
    ],
   imports: [
     BrowserModule,
