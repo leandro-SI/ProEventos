@@ -1,3 +1,6 @@
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ContatosComponent } from './components/contatos/contatos.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
@@ -10,8 +13,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { PalestrantesComponent } from './components/palestrantes/palestrantes.component';
 import { NavComponent } from './nav/nav.component';
 
 import { EventoService } from './services/evento.service';
@@ -25,7 +28,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       EventosComponent,
       PalestrantesComponent,
       NavComponent,
-      DateTimeFormatPipe
+      DateTimeFormatPipe,
+      ContatosComponent,
+      DashboardComponent,
+      PerfilComponent
    ],
   imports: [
     BrowserModule,
