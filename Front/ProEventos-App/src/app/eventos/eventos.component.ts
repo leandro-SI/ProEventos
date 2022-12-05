@@ -4,6 +4,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EventoService } from '../services/evento.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-eventos',
@@ -39,21 +40,31 @@ export class EventosComponent implements OnInit {
     );
   }
 
-  constructor(private eventoService: EventoService, private modalService: BsModalService, private toastr: ToastrService) { }
+  constructor(private eventoService: EventoService,
+    private modalService: BsModalService,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getEventos()
   }
 
   public getEventos(): void {
 
-    this.eventoService.getEventos().subscribe(
-      (response: Evento[]) => {
-        this.eventos = response;
-        this.eventosFiltrados = response;
+    this.eventoService.getEventos().subscribe({
+      next: (eventos: Evento[]) => {
+        this.eventos = eventos;
+        this.eventosFiltrados = eventos;
       },
-      error => console.log(error)
-    )
+      error: (error: string) => {
+        this.spinner.hide();
+        this.showError('Erro ao carregar os eventos.', 'Erro!')
+      },
+      complete: () => {
+        this.spinner.hide();
+      }
+    })
 
   }
 
@@ -78,6 +89,10 @@ export class EventosComponent implements OnInit {
 
   showSuccess(msg, title) {
     this.toastr.success(msg, title);
+  }
+
+  showError(msg, title) {
+    this.toastr.error(msg, title);
   }
 
 }
