@@ -1,4 +1,4 @@
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -24,6 +24,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { EventoDetalheComponent } from './components/eventos/evento-detalhe/evento-detalhe.component';
 import { EventoListaComponent } from './components/eventos/evento-lista/evento-lista.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegistrarComponent } from './components/user/registrar/registrar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { EventoListaComponent } from './components/eventos/evento-lista/evento-l
       PerfilComponent,
       TituloComponent,
       EventoDetalheComponent,
-      EventoListaComponent
+      EventoListaComponent,
+      UserComponent,
+      LoginComponent,
+      RegistrarComponent
    ],
   imports: [
     BrowserModule,
