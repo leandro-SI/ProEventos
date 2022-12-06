@@ -9,6 +9,7 @@ import { PalestrantesComponent } from './components/palestrantes/palestrantes.co
 import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
+  { path: 'eventos', redirectTo: 'eventos/lista', pathMatch: 'full' },
   { path: 'eventos', component: EventosComponent,
     children: [
       { path: 'detalhe/:id', component: EventoDetalheComponent },
