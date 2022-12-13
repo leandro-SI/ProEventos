@@ -18,7 +18,7 @@ export class EventoDetalheComponent implements OnInit {
 
   public validation(): void {
     this.form = new FormGroup({
-      tema: new FormControl('', [Validators.required, Validators.minLength(4), Validators.max(50)]),
+      tema: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]),
       local: new FormControl('', Validators.required),
       dataEvento: new FormControl('', Validators.required),
       qtdPessoas: new FormControl('', [Validators.required, Validators.max(120000)]),
