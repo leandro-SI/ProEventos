@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  get f(): any {
+    return this.form.controls;
+  }
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.validation();
+  }
+
+  public validation(): void {
+    this.form = this.formBuilder.group({
+      primeiroNome: ['', Validators.required],
+      ultimoNome: ['', Validators.required],
+      email: ['', Validators.required],
+      userName: ['', Validators.required],
+      senha: ['', Validators.required],
+      confirmaSenha: ['', Validators.required]
+    });
   }
 
 }
