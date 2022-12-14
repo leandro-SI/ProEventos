@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProEventos.Application.Dtos;
 using ProEventos.Application.Services.Interface;
 using ProEventos.Domain.Models;
 using ProEventos.Persistence;
@@ -82,7 +83,7 @@ namespace ProEventos.API.Controllers
 
         [HttpPost]
         [Route("SaveEvento")]
-        public async Task<IActionResult> SaveEvento(Evento model)
+        public async Task<IActionResult> SaveEvento(EventoDto model)
         {
             try
             {
@@ -101,7 +102,7 @@ namespace ProEventos.API.Controllers
 
         [HttpPut]
         [Route("UpdateEvento")]
-        public async Task<IActionResult> UpdateEvento(int id, Evento model)
+        public async Task<IActionResult> UpdateEvento(int id, EventoDto model)
         {
             try
             {
