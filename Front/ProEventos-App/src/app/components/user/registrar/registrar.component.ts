@@ -24,11 +24,15 @@ export class RegistrarComponent implements OnInit {
     this.form = this.formBuilder.group({
       primeiroNome: ['', Validators.required],
       ultimoNome: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       userName: ['', Validators.required],
       senha: ['', Validators.required],
       confirmaSenha: ['', Validators.required]
     });
+  }
+
+  reseteForm(): void {
+    this.form.reset();
   }
 
 }
