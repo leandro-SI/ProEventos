@@ -57,11 +57,15 @@ namespace ProEventos.Application.Services
 
                 model.Id = evento.Id;
 
-                _geralPersist.Update<Evento>(model);
+                _mapper.Map(model, evento);
+
+                _geralPersist.Update<Evento>(evento);
 
                 if (await _geralPersist.SaveChangesAsync())
                 {
-                    return await _eventoPersist.GetEventoByIdAsync(model.Id);
+                    var result = await _eventoPersist.GetEventoByIdAsync(evento.Id);
+
+                    return _mapper.Map<EventoDto>(result); 
                 }
 
                 return null;
