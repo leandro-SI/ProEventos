@@ -18,7 +18,7 @@
           <label>Primeiro Nome</label>
           <input type="text" class="form-control" [ngClass]="{'is-invalid': f.primeiroNome.errors && f.primeiroNome.touched}"
           formControlName="primeiroNome" placeholder="Insira o Primeiro nome" />
-          <div *ngIf="f.primeiroNome.errors?.required" class="invalid-feedback">
+          <div *ngIf="f.primeiroNome.errors?.required && f.primeiroNome.touched" class="invalid-feedback">
             primeiro nome é obrigatório
           </div>
         </div>
@@ -65,6 +65,9 @@
           formControlName="confirmaSenha" placeholder="Confirme a Senha" />
           <div *ngIf="f.confirmaSenha.errors?.required" class="invalid-feedback">
             confirmação da senha é obrigatório
+          </div>
+          <div *ngIf="f.confirmaSenha.errors?.mustMatch" class="invalid-feedback">
+            confirmação de senha não confere
           </div>
         </div>
       </div>
