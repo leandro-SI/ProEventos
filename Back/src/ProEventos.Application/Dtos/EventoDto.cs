@@ -21,6 +21,9 @@ namespace ProEventos.Application.Dtos
         [Display(Name = "Qtd pessoas")]
         [Range(1, 5000, ErrorMessage = "{0} não permitido.")]
         public int QtdPessoas { get; set; }
+
+        [Display(Name = "Imagem")]
+        [RegularExpression(@"(?i).*\.(gif|jpe?g|png|bmp)$", ErrorMessage = "Formato de {0} inválido.")]
         public string ImagemURL { get; set; }
 
         [Required(ErrorMessage = "o campo {0} é requerido.")]
