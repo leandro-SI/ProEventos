@@ -11,7 +11,7 @@ namespace ProEventos.Application.Dtos
         public int Id { get; set; }
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Interlavo não permitido.")]
         public string Local { get; set; }
-        public string DataEvento { get; set; }
+        public DateTime DataEvento { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatorio.")]
         [MinLength(3, ErrorMessage = "O {0} deve ter no mínimo 3 caracteres.")]

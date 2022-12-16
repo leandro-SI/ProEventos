@@ -36,4 +36,8 @@ export class EventoDetalheComponent implements OnInit {
     this.form.reset();
   }
 
+  cssValidator(campoForm: FormGroup): any {
+    return {'is-invalid': campoForm.errors && campoForm.touched};
+  }
+
 }
