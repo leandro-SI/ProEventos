@@ -28,8 +28,9 @@
       </div>
       <div class="form-group col-md-4">
         <label>Data e Hora</label>
-        <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataEvento)"
-        formControlName="dataEvento" placeholder="">
+        <input type="text" class="form-control" [ngClass]="cssValidator(f.dataEvento)"
+        formControlName="dataEvento" bsDatepicker placeholder=""
+        [bsConfig]="bsConfig">
         <div *ngIf="f.dataEvento.errors?.required" class="invalid-feedback">
           data e hora é obrigatório
         </div>
